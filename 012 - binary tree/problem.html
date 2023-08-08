@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+        <style>
+/* From extension vscode.github */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+.vscode-dark img[src$=\#gh-light-mode-only],
+.vscode-light img[src$=\#gh-dark-mode-only] {
+	display: none;
+}
+
+</style>
+        
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item {
+    list-style-type: none;
+}
+
+.task-list-item-checkbox {
+    margin-left: -20px;
+    vertical-align: middle;
+    pointer-events: none;
+}
+</style>
+        
+    </head>
+    <body class="vscode-body vscode-light">
+        <p>Hey there,</p>
+<p>Today I'd like to give you some tips on how to solve tree-based interview questions. Tree questions are very common at top tech company interviews. I had two tree questions in my Google onsite interviews and one during my Facebook onsite interviews. An awesome thing about them is that they can be formulaically solved every single time. It doesn’t involve any genius insight. Let me show you how.
+Instead of being too abstract, let’s just dive right into an easy binary tree question. Then I’ll walk through how to solve it and we can go into a harder problem after:
+Given the root to a binary tree, count the total number of nodes there are.
+Before we move on further, feel free to take a moment to think about the answer!
+Solving any binary tree question involves just two steps.
+First is solving the base case. This usually means solving the leaf node case (a leaf node has no left or right children) or the null case. For the above problem, we can see that a null should represent 0 nodes while a leaf node should represent 1 node.
+Second is the recursive step. Assuming you knew the solution to the left subtree and the right subtree, how could you combine the two results to give you the final solution? It’s important to not get caught up on how this works and just have faith that it works. If you start tracing the recursion, you’re going to needlessly use up time and energy during the interview. Intuitively though, it works for similar reasons as why regular induction works. P(0) or the base case works which causes P(1) or the leaf node to work which causes P(2) to work and so on. For this problem, it’s easy to combine the results of the left and right subtrees. Just add the two numbers and then another 1 for the root. Here’s the code:</p>
+<pre><code class="language-python">
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">count</span>(<span class="hljs-params">node</span>):
+        <span class="hljs-keyword">return</span> count(node.left) + count(node.right) + <span class="hljs-number">1</span> <span class="hljs-keyword">if</span> node <span class="hljs-keyword">else</span> <span class="hljs-number">0</span>
+
+</code></pre>
+<p>You certainly won’t get a question this easy but the process is the same for trickier problems. Here’s another problem:
+Given the root to a binary tree, return the deepest node.
+Base case for this question actually can’t be null, because it’s not a real result that can be combined (null is not a node). Here we should use the leaf node as the base case and return itself.
+The recursive step for this problem is a little bit different because we can’t actually use the results of the left and right subtrees directly. So we need to ask, what other information do we need to solve this question? It turns out if we tagged with each subresult node their depths, we could get the final solution by picking the higher depth leaf and then incrementing it:</p>
+<pre><code class="language-python">
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">deepest</span>(<span class="hljs-params">node</span>):
+    <span class="hljs-keyword">if</span> node <span class="hljs-keyword">and</span> <span class="hljs-keyword">not</span> node.left <span class="hljs-keyword">and</span> <span class="hljs-keyword">not</span> node.right:
+        <span class="hljs-keyword">return</span> (node, <span class="hljs-number">1</span>) <span class="hljs-comment"># Leaf and its depth</span>
+
+    <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> node.left: <span class="hljs-comment"># Then the deepest node is on the right subtree</span>
+        <span class="hljs-keyword">return</span> increment_depth(deepest(node.right))
+    <span class="hljs-keyword">elif</span> <span class="hljs-keyword">not</span> node.right: <span class="hljs-comment"># Then the deepest node is on the left subtree</span>
+        <span class="hljs-keyword">return</span> increment_depth(deepest(node.left))
+
+    <span class="hljs-keyword">return</span> increment_depth(
+            <span class="hljs-built_in">max</span>(deepest(node.left), deepest(node.right),
+                    key=<span class="hljs-keyword">lambda</span> x: x[<span class="hljs-number">1</span>])) <span class="hljs-comment"># Pick higher depth tuple and then increment its depth</span>
+
+<span class="hljs-keyword">def</span> <span class="hljs-title function_">increment_depth</span>(<span class="hljs-params">node_depth_tuple</span>):
+    node, depth = node_depth_tuple
+    <span class="hljs-keyword">return</span> (node, depth + <span class="hljs-number">1</span>)
+
+</code></pre>
+<p>Best of luck!
+Marc
+If you liked this guide, feel free to forward it along! As always, shoot us an email if there's anything we can help with!</p>
+
+        
+        
+    </body>
+    </html>
