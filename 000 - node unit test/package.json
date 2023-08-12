@@ -1,0 +1,10 @@
+{
+  "name": "node-unit-test",
+  "version": "1.0.0",
+  "main": "solution.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}
