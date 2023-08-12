@@ -6,7 +6,7 @@ def sum(a, b):
 
 
 class Tester(unittest.TestCase):
-    def test_case1(self):
+    def test_case_01(self):
         self.assertEqual(2, sum(1, 1))
 
 
