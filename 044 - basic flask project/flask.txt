@@ -1,0 +1,52 @@
+Help on package flask:
+
+NAME
+    flask
+
+PACKAGE CONTENTS
+    __main__
+    app
+    blueprints
+    cli
+    config
+    ctx
+    debughelpers
+    globals
+    helpers
+    json (package)
+    logging
+    scaffold
+    sessions
+    signals
+    templating
+    testing
+    typing
+    views
+    wrappers
+
+FUNCTIONS
+    __getattr__(name)
+
+DATA
+    appcontext_popped = <blinker.base.NamedSignal object at 0x000001414E9F...
+    appcontext_pushed = <blinker.base.NamedSignal object at 0x000001414E8B...
+    appcontext_tearing_down = <blinker.base.NamedSignal object at 0x000001...
+    before_render_template = <blinker.base.NamedSignal object at 0x0000014...
+    current_app = <LocalProxy unbound>
+    g = <LocalProxy unbound>
+    got_request_exception = <blinker.base.NamedSignal object at 0x00000141...
+    message_flashed = <blinker.base.NamedSignal object at 0x000001414E9FE9...
+    request = <LocalProxy unbound>
+    request_finished = <blinker.base.NamedSignal object at 0x000001414E8BD...
+    request_started = <blinker.base.NamedSignal object at 0x000001414E8BDD...
+    request_tearing_down = <blinker.base.NamedSignal object at 0x000001414...
+    session = <LocalProxy unbound>
+    template_rendered = <blinker.base.NamedSignal object at 0x000001414E8B...
+
+VERSION
+    2.3.3
+
+FILE
+    c:\python\python311\lib\site-packages\flask\__init__.py
+
+
