@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Node ToDo</title>
+</head>
+
+<body>
+    <h1>Node ToDo</h1>
+    <form action="/create" method="post">
+        <input type="text" name="task" id="task">
+        <input type="submit" value="Create">
+    </form>
+    <ul>
+        <% data.forEach(el => { %>
+            <li>
+                <div><%= el.task %></div>
+                <div><a href="/done/<%= el.id %>">Done</a></div>
+            </li> 
+        <% }) %>
+    </ul>
+</body>
+
+</html>
