@@ -7,10 +7,7 @@ const repository = (function() {
     base.serialize(() => {
         base.run('CREATE TABLE IF NOT EXISTS todos (id, task)');
         base.each('SELECT id, task FROM todos', (_, row) => {
-            data.push({
-                id: row.id,
-                task: row.task
-            });
+            data.push({id: row.id, task: row.task});
         });
     });
 
@@ -19,10 +16,7 @@ const repository = (function() {
     }
 
     function create(task) {
-        const newTask = {
-            id: _nextId(),
-            task
-        };
+        const newTask = {id: _nextId(), task};
         data.push(newTask);
         base.prepare("INSERT INTO todos (id, task) VALUES (?, ?)")
             .run(newTask.id, newTask.task)
